@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universal Web X</title>
+    <title>VexOS</title>
     <style>
         /* Importing fonts that match the "Vex IQ" / Sci-fi look */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Lora:ital@0;1&display=swap');
@@ -19,7 +19,7 @@
             color: black;
         }
 
-        /* Navigation Menu - matches image_45d99b.png */
+        /* Navigation Menu */
         header {
             width: 100%;
             display: flex;
@@ -41,12 +41,12 @@
             text-decoration: underline;
         }
 
-        /* VexOS Home Page Content - image_45d99b.png */
+        /* VexOS Home Page Content */
         #vexos-page {
             max-width: 1000px;
             text-align: center;
             padding: 40px 20px;
-            display: flex; /* Shown by default */
+            display: flex;
             flex-direction: column;
             align-items: center;
         }
@@ -64,11 +64,11 @@
             font-family: 'Lora', serif;
             font-size: 26px;
             line-height: 1.4;
-            text-align: left; /* Left aligned like the image */
+            text-align: left;
             color: #1a1a1a;
         }
 
-        /* Build Instructions Page - image_45803b.png / image_45d9b2.png */
+        /* Build Instructions Page / Maze */
         #build-page {
             display: none; /* Hidden by default */
             flex-direction: column;
@@ -82,7 +82,7 @@
         .build-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 48px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             letter-spacing: -1px;
         }
 
@@ -91,17 +91,52 @@
             font-size: 20px;
             max-width: 800px;
             line-height: 1.5;
+            margin-bottom: 30px;
         }
 
+        /* New Button Styling */
+        .download-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background-color: #4db8ff;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            font-size: 18px;
+            border: 3px solid black;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px black;
+        }
+
+        .download-btn:hover {
+            background-color: #3aa3e6;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px black;
+        }
+
+        .download-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px black;
+        }
+
+        .controls-info {
+            font-family: 'Lora', serif;
+            margin-top: 25px;
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <nav>
-            <a onclick="showPage('home')">HOME</a>
-            <a onclick="showPage('home')" class="active">VEXOS</a>
-            <a onclick="showPage('build')">Maze</a>
+            <a onclick="showPage('home')" id="nav-home">HOME</a>
+            <a onclick="showPage('home')" id="nav-vexos" class="active">VEXOS</a>
+            <a onclick="showPage('build')" id="nav-maze">Maze</a>
         </nav>
     </header>
 
@@ -123,20 +158,30 @@
             Get the source code <br>
             for the maze by clicking on the button below.
         </p>
-        <a download="mazer.exe">Download MazeMakr</a>
+        
+        <a href="mazer.exe" download="mazer.exe" class="download-btn">DOWNLOAD MAZEMAKR</a>
+        
     </div>
 
     <script>
         function showPage(page) {
+            const homePage = document.getElementById('vexos-page');
+            const buildPage = document.getElementById('build-page');
+            const navVexos = document.getElementById('nav-vexos');
+            const navMaze = document.getElementById('nav-maze');
+
             if (page === 'home') {
-                document.getElementById('vexos-page').style.display = 'flex';
-                document.getElementById('build-page').style.display = 'none';
+                homePage.style.display = 'flex';
+                buildPage.style.display = 'none';
+                navVexos.classList.add('active');
+                navMaze.classList.remove('active');
             } else {
-                document.getElementById('vexos-page').style.display = 'none';
-                document.getElementById('build-page').style.display = 'flex';
+                homePage.style.display = 'none';
+                buildPage.style.display = 'flex';
+                navVexos.classList.remove('active');
+                navMaze.classList.add('active');
             }
         }
     </script>
-
 </body>
 </html>
