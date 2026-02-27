@@ -3,56 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VexOS Build Instructions</title>
+    <title>VexOS</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;700&display=swap');
 
-        /* Build Instructions Page Style (image_0.png, image_1.png) */
-        body.build-instructions {
+        /* Global & Nav Styles */
+        body {
             background-color: #f7f9fc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            font-family: 'Anton', sans-serif;
-            text-align: center;
-        }
-
-        .build-instructions-container {
-            width: 80%;
-            max-width: 800px;
-        }
-
-        .build-instructions h1 {
-            font-size: 3rem;
-            margin-bottom: 50px;
-            color: black;
-            text-transform: uppercase;
-        }
-
-        .build-instructions p {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            color: black;
-            text-transform: uppercase;
-        }
-
-        /* VexOS Page Style (image_2.png) */
-        body.vexos {
-            background-color: #f7f9fc;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
         header {
             width: 100%;
             text-align: center;
-            margin-bottom: 20px;
+            padding: 20px 0;
+            background-color: #f7f9fc; /* Matches background */
         }
 
         nav {
@@ -66,6 +35,8 @@
             margin: 0 15px;
             font-size: 1rem;
             text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+            cursor: pointer;
         }
 
         nav a.active {
@@ -73,12 +44,45 @@
             font-weight: 700;
         }
 
-        .vexos main {
+        /* Build Instructions Page Style */
+        .build-instructions-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            width: 80%;
+            max-width: 800px;
+            font-family: 'Anton', sans-serif;
+            text-align: center;
+        }
+
+        .build-instructions-container h1 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        .build-instructions-container p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        /* VexOS Page Style */
+        .vexos-container {
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             max-width: 900px;
             text-align: center;
         }
 
-        .vexos h1 {
+        .vexos-container h1 {
             font-family: 'Anton', sans-serif;
             font-size: 6rem;
             text-transform: uppercase;
@@ -101,7 +105,7 @@
                  10px 10px 20px rgba(0,0,0,0.3);
         }
 
-        .vexos p {
+        .vexos-container p {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #333;
@@ -110,41 +114,45 @@
 
     </style>
 </head>
-<body class="build-instructions" id="page-body">
+<body>
 
-    <div class="build-instructions-container" id="build-content">
-        <h1>BUILD INSTRUCTIONS</h1>
-        <p>CURRENTLY, OUR BUILDS AREN'T FINISHED, WHEN DONE, WE WILL POST A TUTORIAL HERE.</p>
+    <header>
+        <nav>
+            <a onclick="showPage('vexos')" id="nav-home" class="active">HOME</a>
+            <a onclick="showPage('vexos')" id="nav-vexos">VEXOS</a>
+            <a onclick="showPage('build')" id="nav-build">BUILD INSTRUCTIONS</a>
+        </nav>
+    </header>
+
+    <div class="vexos-container" id="vexos-content">
+        <h1>Vex Operating System</h1>
+        <p>With some simple and advanced Vex IQ machinery, We are in the process of making an operating system within a single Vex IQ brain. We have created a functional notepad-like system, and using a relatively simple program, we are in the process of making a never-done-before system: making two brains transfer information from one another, without any code changes. To build the “Computer” that handles the operating system, you need to check out the Build Instructions page.</p>
     </div>
 
-    <div class="vexos-container" id="vexos-content" style="display: none;">
-        <header>
-            <nav>
-                <a href="#" onclick="showPage('vexos')" class="active">HOME</a>
-                <a href="#" onclick="showPage('vexos')">VEXOS</a>
-                <a href="#" onclick="showPage('build')">BUILD INSTRUCTIONS</a>
-            </nav>
-        </header>
-        <main>
-            <h1>Vex Operating System</h1>
-            <p>With some simple and advanced Vex IQ machinery, We are in the process of making an operating system within a single Vex IQ brain. We have created a functional notepad-like system, and using a relatively simple program, we are in the process of making a never-done-before system: making two brains transfer information from one another, without any code changes. To build the “Computer” that handles the operating system, you need to check out the Build Instructions page.</p>
-        </main>
+    <div class="build-instructions-container" id="build-content" style="display: none;">
+        <h1>BUILD INSTRUCTIONS</h1>
+        <p>CURRENTLY, OUR BUILDS AREN'T FINISHED, WHEN DONE, WE WILL POST A TUTORIAL HERE.</p>
     </div>
 
     <script>
         function showPage(pageName) {
             const buildContent = document.getElementById('build-content');
             const vexosContent = document.getElementById('vexos-content');
-            const body = document.getElementById('page-body');
+            
+            // Nav elements for styling
+            const navHome = document.getElementById('nav-home');
+            const navBuild = document.getElementById('nav-build');
 
             if (pageName === 'build') {
-                buildContent.style.display = 'block';
+                buildContent.style.display = 'flex';
                 vexosContent.style.display = 'none';
-                body.className = 'build-instructions';
+                navHome.classList.remove('active');
+                navBuild.classList.add('active');
             } else if (pageName === 'vexos') {
                 buildContent.style.display = 'none';
-                vexosContent.style.display = 'block';
-                body.className = 'vexos';
+                vexosContent.style.display = 'flex';
+                navHome.classList.add('active');
+                navBuild.classList.remove('active');
             }
         }
     </script>
