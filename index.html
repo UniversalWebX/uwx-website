@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VexOS Build Instructions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;700&display=swap');
+
+        /* Build Instructions Page Style (image_0.png, image_1.png) */
+        body.build-instructions {
+            background-color: #f7f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Anton', sans-serif;
+            text-align: center;
+        }
+
+        .build-instructions-container {
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .build-instructions h1 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        .build-instructions p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        /* VexOS Page Style (image_2.png) */
+        body.vexos {
+            background-color: #f7f9fc;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            display: inline-block;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            margin: 0 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        nav a.active {
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .vexos main {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .vexos h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 6rem;
+            text-transform: uppercase;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            color: black;
+            text-shadow: 
+                -2px -2px 0 #00E5FF,  
+                 2px -2px 0 #00E5FF,
+                -2px  2px 0 #00E5FF,
+                 2px  2px 0 #00E5FF,
+                -4px -4px 0 #00B0FF, 
+                 4px -4px 0 #00B0FF,
+                -4px  4px 0 #00B0FF, 
+                 4px  4px 0 #00B0FF,
+                -6px -6px 0 #0081CB,
+                 6px -6px 0 #0081CB,
+                -6px  6px 0 #0081CB,
+                 6px  6px 0 #0081CB,
+                 10px 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .vexos p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+
+    </style>
+</head>
+<body class="build-instructions" id="page-body">
+
+    <div class="build-instructions-container" id="build-content">
+        <h1>BUILD INSTRUCTIONS</h1>
+        <p>CURRENTLY, OUR BUILDS AREN'T FINISHED, WHEN DONE, WE WILL POST A TUTORIAL HERE.</p>
+    </div>
+
+    <div class="vexos-container" id="vexos-content" style="display: none;">
+        <header>
+            <nav>
+                <a href="#" onclick="showPage('vexos')" class="active">HOME</a>
+                <a href="#" onclick="showPage('vexos')">VEXOS</a>
+                <a href="#" onclick="showPage('build')">BUILD INSTRUCTIONS</a>
+            </nav>
+        </header>
+        <main>
+            <h1>Vex Operating System</h1>
+            <p>With some simple and advanced Vex IQ machinery, We are in the process of making an operating system within a single Vex IQ brain. We have created a functional notepad-like system, and using a relatively simple program, we are in the process of making a never-done-before system: making two brains transfer information from one another, without any code changes. To build the “Computer” that handles the operating system, you need to check out the Build Instructions page.</p>
+        </main>
+    </div>
+
+    <script>
+        function showPage(pageName) {
+            const buildContent = document.getElementById('build-content');
+            const vexosContent = document.getElementById('vexos-content');
+            const body = document.getElementById('page-body');
+
+            if (pageName === 'build') {
+                buildContent.style.display = 'block';
+                vexosContent.style.display = 'none';
+                body.className = 'build-instructions';
+            } else if (pageName === 'vexos') {
+                buildContent.style.display = 'none';
+                vexosContent.style.display = 'block';
+                body.className = 'vexos';
+            }
+        }
+    </script>
+</body>
+</html>
